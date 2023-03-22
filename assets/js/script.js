@@ -110,3 +110,19 @@ if(weightGain = true){
 
 console.log(targetBMR);
 
+
+//This function will calculate the BMI by Harold
+function calculateBMI() {
+
+  //this will get the value of the weight and height 
+  var weight = (document.getElementById("weight").value);
+  var height = (document.getElementById("height").value);
+  
+  //this will calculate the bmi and using "tofixed" to get only 1 decimal place
+  var bmi = weight / (height * height);
+  bmi = bmi.toFixed(1);
+  
+  //this will send the output to the screen
+  var result = document.getElementById("result");
+  result.innerHTML = "Your BMI is " + bmi + "";
+}
