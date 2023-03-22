@@ -8,7 +8,40 @@
     <link rel="stylesheet" href="./styles.css">
  </head>
  <body>
+
+  
+  <h2>Let's Calculate you BMR!</h2>
+<form id="bmrCalcForm" action="submitBMR">
+
+  <label for="gender"> Select you gender</label>
+  <select name="gender">
+    <option value="none" selected>Gender</option>
+    <option value="male">Male</option>
+    <option value="female">Female</option>
+  </select>
+
+  <div>
+    <label class="space" for="text">Weight:</label>
+    <span><input id="weightKg"type="text"> kg</span>
+  </div>
+
+  <div>
+    <label class="space" for="text">Height:</label>
+    <span><input id="heightMeters" type="text"> meters</span>
+  </div>
+
+  <div>
+    <label class="space" for="text">Age:</label>
+    <span><input id="ageYears"type="text"> years</span>
+  </div>
+
+  <input id="submitBmrBtn"type="submit" value="Submit">
+  
+</form>
     
+<div>
+  <span id="displayBmr"></span>
+</div>
 
    <script src="./script.js"></script>
  </body>
