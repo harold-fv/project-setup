@@ -27,6 +27,64 @@ fetch('https://api.edamam.com/api/nutrition-data?app_id=' + appeda_Id + '&app_ke
     console.log(data);
   }); 
 
+
+
+// User Submits info BMR is shown
+var bmrForm = document.getElementById('bmrCalcForm');
+
+bmrForm.addEventListener('submit', function(event) {
+  event.preventDefault();  
+    
+  var genderSelect = document.getElementsByName('gender')[0]; 
+  var selectedGender = genderSelect.value; 
+    
+  if (selectedGender === 'male') {
+    getMenBmr(); // call the getMenBmr function
+  } else if (selectedGender === 'female') {
+    getWomenBmr(); // call the getWomenBmr function
+  } else {
+    console.log('Please select a gender'); // handle the case where no gender is selected
+  }
+});
+
+function getMenBmr() {
+  var inputWeight = document.getElementById('weightKg').value;
+  var inputheight = document.getElementById('heightMeters').value;
+  var inputAge = document.getElementById('ageYears').value;
+
+  var weight = inputWeight * 13.7;
+  var height = inputheight * 100 * 5;
+  var ageInYears = inputAge * 6.8;
+
+  var bmrSubmitMen = 66 + weight + height - ageInYears;
+  console.log(bmrSubmitMen);
+  displayBmr.innerText = 'Great your BMR calculation was ' + bmrSubmitMen
+  
+}
+
+function getWomenBmr() {
+  var inputWeight = document.getElementById('weightKg').value;
+  var inputheight = document.getElementById('heightMeters').value;
+  var inputAge = document.getElementById('ageYears').value;
+
+  var weight = inputWeight * 9.6;
+  var height = inputheight * 100 * 1.8;
+  var ageInYears = inputAge * 4.7;
+
+  var bmrSubmitWomen = 655 + weight + height - ageInYears;
+
+  console.log(bmrSubmitWomen);
+  displayBmr.innerText = 'Great your BMR calculation was ' + bmrSubmitWomen
+}
+
+
+// Display  BMR 
+var displayBmr = document.getElementById('displayBmr')
+
+
+ 
+
+
   // Functions for targets BMR mike
   
   let baseBMR = 2000;
@@ -51,3 +109,4 @@ if(weightGain = true){
 }
 
 console.log(targetBMR);
+
