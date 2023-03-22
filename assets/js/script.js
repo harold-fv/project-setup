@@ -7,13 +7,9 @@ fetch(`https://api.nutritionix.com/v1_1/search?q=banana&appId=${appId}&appKey=${
   .catch(error => console.error(error));
 
 
-
-
-
 //Edamame api call
 var appedaKey = '105529a2d8de6085befbd5a16256cdce';
 var appeda_Id = '0474cd6f';
-
 
 
 //sample fetch request for asparagus weight of 100 from edamam
@@ -51,3 +47,20 @@ if(weightGain = true){
 }
 
 console.log(targetBMR);
+
+//Function to calculate the BMI() from Harold
+function calculateBMI() {
+
+  //this will get the value of the weight and height 
+  var weight = (document.getElementById("weight").value);
+  var height = (document.getElementById("height").value);
+  
+  //this will calculate the bmi and using "tofixed" to get only 1 decimal place
+  var bmi = weight / (height * height);
+  bmi = bmi.toFixed(1);
+  
+  //this will send the output to the screen
+  var result = document.getElementById("result");
+  result.innerHTML = "Your BMI is " + bmi + "";
+}
+
