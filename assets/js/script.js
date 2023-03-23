@@ -49,8 +49,7 @@ return ;
 }
 
 
-
-// //Edamame api call, edited to utilize Food Database
+//Edamame api call, edited to utilize Food Database
 // //changed app keys and id to match Food Database API
 // var appedaKey = '96c9812e34d70f8817c3c0855d4ebb4a';
 // var appeda_Id = 'a230f40d';
@@ -73,3 +72,25 @@ return ;
 //     console.log(data.totalNutrientsKCal);
 //   }); 
 // }
+
+var appedaKey = '96c9812e34d70f8817c3c0855d4ebb4a';
+var appeda_Id = 'a230f40d';
+var ingredients = document.getElementById("ingredient");
+var submitBtn = document.getElementById("submitBmrBtn");
+
+submitBtn.addEventListener('click', getResults);
+
+function getResults() {
+  //sample fetch request
+  fetch('https://api.edamam.com/api/food-database/v2/parser?app_id=' + appeda_Id + '&app_key=' + appedaKey + '&ingr=' + ingredients.value, {
+    method: 'GET', //GET is the default.
+  })
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data);
+      console.log(data.calories); //console logging accessing calories from data response
+      console.log(data.totalNutrientsKCal);
+    }); 
+}
