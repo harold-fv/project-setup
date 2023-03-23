@@ -8,40 +8,18 @@
 
 
 
-// //Edamame api call, edited to utilize Food Database
-// //changed app keys and id to match Food Database API
-// var appedaKey = '96c9812e34d70f8817c3c0855d4ebb4a';
-// var appeda_Id = 'a230f40d';
-// var ingredients = document.getElementById("ingredient");
-// var submitBtn = document.getElementById("submitBmrBtn");
+//Shabab's Edamame api call, edited to utilize Food Database
+//changed app keys and id to match Food Database API
+var appedaKey = '96c9812e34d70f8817c3c0855d4ebb4a';
+var appeda_Id = 'a230f40d';
+var ingredients = document.getElementById("ingredient");
+var submitBtn = document.getElementById("submitBmrBtn");
 
-// submitBtn.addEventListener('click', getResults);
-// function getResults(){
+submitBtn.addEventListener('click', getResults);
+function getResults(){
 
-// //sample fetch request
-// fetch('https://api.edamam.com/api/food-database/v2/parser?app_id=' + appeda_Id + '&app_key=' + appedaKey + '&ingr=' + ingredients, {
-//   method: 'GET', //GET is the default.
-// })
-//   .then(function (response) {
-//     return response.json();
-//   })
-//   .then(function (data) {
-//     console.log(data);
-//     console.log(data.calories); //console logging accessing calories from data response
-//   }); 
-// }
-
-let energyCals = 0;
-let proteinCals = 0;
-let carbCals = 0;
-let fatCals = 0;
-
-let query = document.getelementbyid
-//Edamame api call
-var appedaKey = '105529a2d8de6085befbd5a16256cdce';
-var appeda_Id = '0474cd6f';
-//sample fetch request for asparagus weight of 100 from edamam
-fetch('https://api.edamam.com/api/food-database/v2/parser?app_id=' + appeda_Id + '&app_key=' + appedaKey + '&ingr=asparagus', {
+//sample fetch request
+fetch('https://api.edamam.com/api/food-database/v2/parser?app_id=' + appeda_Id + '&app_key=' + appedaKey + '&ingr=' + ingredients, {
   method: 'GET', //GET is the default.
 })
   .then(function (response) {
@@ -49,16 +27,9 @@ fetch('https://api.edamam.com/api/food-database/v2/parser?app_id=' + appeda_Id +
   })
   .then(function (data) {
     console.log(data);
-    console.log(data.parsed[0].food.nutrients);
-
-    energyCals = data.parsed[0].food.nutrients.ENERC_KCAL;
-    proteinCals = data.parsed[0].food.nutrients.PROCNT;
-    carbCals = data.parsed[0].food.nutrients.FAT;
-    fatCals = data.parsed[0].food.nutrients.PROCNT;
-  });
-
-
-
+    console.log(data.calories); //console logging accessing calories from data response
+  }); 
+}
 
 // //This function will calculate the BMI by Harold
 // function calculateBMI() {
