@@ -24,15 +24,14 @@
 
 
 
-
+//created by harold
+var bmr = 0;
+var bmi = 0;
 function bmrbmicalc() {
   var weight = Number(document.getElementById("weight").value);
   var height = Number(document.getElementById("height").value);
   var age = Number(document.getElementById("age").value);
   var gender = document.getElementById("gender").value;
-
-  var bmr = 0;
-  var bmi = 0;
 
   if (gender === 'male') {
     bmr = 66.5 + (13.75 * weight) + (5.003 * height) - (6.75 * age);
@@ -44,13 +43,33 @@ function bmrbmicalc() {
   }
 
   bmi = weight / (height ** 2);
-
- var resultString = `Your BMR is ${bmr.toFixed(2)} and your calories per day.<br>Your BMI is ${bmi.toFixed(2)}.`;
-
+  var resultString = `Your BMR is ${bmr.toFixed(2)} and your calories per day.<br>Your BMI is ${bmi.toFixed(2)}.`;
   document.getElementById("result").innerHTML = resultString;
-
+return ;
 }
 
 
 
+// //Edamame api call, edited to utilize Food Database
+// //changed app keys and id to match Food Database API
+// var appedaKey = '96c9812e34d70f8817c3c0855d4ebb4a';
+// var appeda_Id = 'a230f40d';
+// var ingredients = document.getElementById("ingredient");
+// var submitBtn = document.getElementById("submitBmrBtn");
 
+// submitBtn.addEventListener('click', getResults);
+// function getResults(){
+
+// //sample fetch request
+// fetch('https://api.edamam.com/api/food-database/v2/parser?app_id=' + appeda_Id + '&app_key=' + appedaKey + '&ingr=' + ingredients, {
+//   method: 'GET', //GET is the default.
+// })
+//   .then(function (response) {
+//     return response.json();
+//   })
+//   .then(function (data) {
+//     console.log(data);
+//     console.log(data.calories); //console logging accessing calories from data response
+//     console.log(data.totalNutrientsKCal);
+//   }); 
+// }
