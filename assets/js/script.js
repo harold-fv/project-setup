@@ -6,24 +6,30 @@
 // //   .then(data => console.log(data))
 // //   .catch(error => console.error(error));
 
-// //Edamame api call
-// var appedaKey = '105529a2d8de6085befbd5a16256cdce';
-// var appeda_Id = '0474cd6f';
 
 
-// //sample fetch request for asparagus weight of 100 from edamam
-// fetch('https://api.edamam.com/api/nutrition-data?app_id=' + appeda_Id + '&app_key=' + appedaKey + '&ingr=asparagus&weight=100', {
-//   method: 'GET', //GET is the default.
-// })
-//   .then(function (response) {
-//     return response.json();
-//   })
-//   .then(function (data) {
-//     console.log(data);
-//   }); 
+//Shabab's Edamame api call, edited to utilize Food Database
+//changed app keys and id to match Food Database API
+var appedaKey = '96c9812e34d70f8817c3c0855d4ebb4a';
+var appeda_Id = 'a230f40d';
+var ingredients = document.getElementById("ingredient");
+var submitBtn = document.getElementById("submitBmrBtn");
 
+submitBtn.addEventListener('click', getResults);
+function getResults(){
 
-
+//sample fetch request
+fetch('https://api.edamam.com/api/food-database/v2/parser?app_id=' + appeda_Id + '&app_key=' + appedaKey + '&ingr=' + ingredients, {
+  method: 'GET', //GET is the default.
+})
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+    console.log(data);
+    console.log(data.calories); //console logging accessing calories from data response
+  }); 
+}
 //created by harold
 var bmr = 0;
 var bmi = 0;
@@ -47,6 +53,22 @@ function bmrbmicalc() {
   document.getElementById("result").innerHTML = resultString;
 return ;
 }
+
+// //This function will calculate the BMI by Harold
+// function calculateBMI() {
+
+//   //this will get the value of the weight and height 
+//   var weight = (document.getElementById("weight").value);
+//   var height = (document.getElementById("height").value);
+  
+//   //this will calculate the bmi and using "tofixed" to get only 1 decimal place
+//   var bmi = weight / (height * height);
+//   bmi = bmi.toFixed(1);
+  
+//   //this will send the output to the screen
+//   var result = document.getElementById("result");
+//   result.innerHTML = "Your BMI is " + bmi + "";
+// }
 
 
 //Edamame api call, edited to utilize Food Database
@@ -73,6 +95,8 @@ return ;
 //   }); 
 // }
 
+
+//possible duplicate (extra console log)
 var appedaKey = '96c9812e34d70f8817c3c0855d4ebb4a';
 var appeda_Id = 'a230f40d';
 var ingredients = document.getElementById("ingredient");
