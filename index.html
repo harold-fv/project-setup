@@ -12,28 +12,30 @@
   <p>Enter your weight, height, gender, and age below to calculate your BMI:</p>
   <form>
     <label for="weight">Weight (kg):</label>
-    <input type="number" id="weight" name="weight">
+    <input type="number" id="weight" name="weight" required>
     <br>
     <label for="height">Height (m):</label>
-    <input type="number" id="height" name="height">
-    <br>
-    <label for="gender">Gender:</label>
-    <input type="radio" id="male" name="gender" value="male">
-    <label for="male">Male</label>
-    <input type="radio" id="female" name="gender" value="female">
-    <label for="female">Female</label>
+    <input type="number" id="height" name="height" required>
     <br>
     <label for="age">Age:</label>
-    <input type="number" id="age" name="age">
+    <input type="number" id="age" name="age" required>
     <br>
-    <button type="button" onclick="calculateBMI()">Calculate BMI</button>
+    <label for="gender">Gender:</label>
+    <select id="gender" name="gender" required>
+      <option value="">Select</option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+    </select>
+    <br>
+    <input type="button" value="Calculate" onclick="bmrbmicalc()">
   </form>
-  <br>
-  <div id="result"></div>
+  <p id="result"></p>
 
-    
-  <h2>Let's Calculate you BMR!</h2>
-<form id="bmrCalcForm" action="submitBMR">
+  <h1>Edamam API Demo</h1>
+    <label for="ingredient">Enter an ingredient:</label>
+    <input type="text" id="ingredient" name="ingredient" required>
+    <br>
+    <button id="submitBmrBtn">Get Results</button>
 
   <label for="gender"> Select you gender</label>
   <select name="gender">
@@ -56,8 +58,9 @@
     <label class="space" for="text">Age:</label>
     <span><input id="ageYears"type="text"> years</span>
   </div>
-
-  <input id="submitBmrBtn"type="submit" value="Submit">
+   <input id = "ingredient" type ="text"> 
+  <button id= "submitBmrBtn" type="submit" value="Submit"> Search </button>
+    <div id = "displayResults"> </div>
   
 </form>
     
@@ -80,3 +83,4 @@
   <script src="./assets/js/script.js"></script>
  </body>
  </html>  
+
