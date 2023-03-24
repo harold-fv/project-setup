@@ -59,6 +59,7 @@ let energyCals = 0;
 let proteinCals = 0;
 let carbCals = 0;
 let fatCals = 0;
+let meal = []
 function getEdamamResults() {
 
 fetch('https://api.edamam.com/api/food-database/v2/parser?app_id=' + appeda_Id + '&app_key=' + appedaKey + '&ingr=' + searchInput.value, {
@@ -75,13 +76,26 @@ fetch('https://api.edamam.com/api/food-database/v2/parser?app_id=' + appeda_Id +
     proteinCals = data.parsed[0].food.nutrients.PROCNT;
     carbCals = data.parsed[0].food.nutrients.FAT;
     fatCals = data.parsed[0].food.nutrients.PROCNT;
+    var item = {
+      food: data.text,
+      energy: energyCals, 
+      protein: proteinCals,
+      carbs: carbCals,
+      fat: fatCals
+    
+    }
+
+  meal.push(item)
+  console.log(meal)
+  sumArray(meal)
+    displayInfoResults(energyCals, proteinCals, carbCals, fatCals)
   });
- displayInfoResults(energyCals, proteinCals, carbCals, fatCals)
+ 
 }
 
 function displayInfoResults(energyCals, proteinCals, carbCals, fatCals) {
   var divResults = document.getElementById('resultsArray')
-  divResults.innerHTML = `
+  divResults.innerHTML += `
   <p>Energy Calories: ${energyCals}</p>
   <p>Protein Calories: ${proteinCals}</p>
   <p>Carb Calories: ${carbCals}</p>
@@ -137,7 +151,7 @@ function displayNutrix(image, foodName) {
 // by michael    
 function sumArray(resultsArray){
   let sum = 0 // the sum is initialed to 0
-  for (let i = 0; i < resultsArray.length; i ++) {
+  for (let i = 0; i < resultsArray.length; i++) {
   // take every item in the array and add it to sum variable
   sum += resultsArray[i]
   // initial: sum = 0
@@ -154,19 +168,32 @@ function sumArray(resultsArray){
 }
 
 
+var fitnessGoal = document.getElementById('fitnessGoal')
+var fatBurn = document.getElementById('fatBurn')
+var tone = document.getElementById('tone')
+var strengthTrain = document.getElementById('strengthTrain')
+
+var num = 0.2
+fitnessGoal.addEventListener('change', function(){
 // Fitness Goal Selection
-targetBMR = 10
-if (fatBurn == true){
-  targetBMR = bmr - .2*BMR;
-  return targetBMR;
+targetBMR = 0
+if (fitnessGoal.value == 'fatBurn'){
+  targetBMR = bmr - num * bmr;
+  console.log(targetBMR)
+  
+  
 }
-if (tone == true){
+if (fitnessGoal.value == 'tone'){
   targetBMR = bmr;
-  return targetBMR;
+  console.log(targetBMR)
+  
 }
-if ( strengthTrain == true){
-  targetBMR = bmr + .2*BMR;
-  return targetBMR;
+if ( fitnessGoal.value == 'strengthTrain'){
+  targetBMR = bmr + num * bmr;
+  console.log(targetBMR)
+  
 }
+})
+
 
 
