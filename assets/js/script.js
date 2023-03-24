@@ -134,3 +134,39 @@ function displayNutrix(image, foodName) {
               searchResult.innerHTML = html;
 }
 
+// by michael    
+function sumArray(resultsArray){
+  let sum = 0 // the sum is initialed to 0
+  for (let i = 0; i < resultsArray.length; i ++) {
+  // take every item in the array and add it to sum variable
+  sum += resultsArray[i]
+  // initial: sum = 0
+  // iteration 1: 0 + 1 => sum = 1
+  // iteration 2: 1 + 4 => sum = 5
+  // iteration 3: 5 + 0 => sum = 5
+  // iteration 4: 5 + 9 => sum = 14
+  // iteration 5: 14 + -3 => sum = 11
+  }
+  console.log(sum) // 11
+  System.out.println("Sum value of array elements is : " + sum);
+  // return sum
+  return sum
+}
+
+
+// Fitness Goal Selection
+targetBMR = 10
+if (fatBurn == true){
+  targetBMR = bmr - .2*BMR;
+  return targetBMR;
+}
+if (tone == true){
+  targetBMR = bmr;
+  return targetBMR;
+}
+if ( strengthTrain == true){
+  targetBMR = bmr + .2*BMR;
+  return targetBMR;
+}
+
+
