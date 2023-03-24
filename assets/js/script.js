@@ -176,7 +176,7 @@ var strengthTrain = document.getElementById('strengthTrain')
 var num = 0.2
 fitnessGoal.addEventListener('change', function(){
 // Fitness Goal Selection
-targetBMR = 10
+targetBMR = 0
 if (fitnessGoal.value == 'fatBurn'){
   targetBMR = bmr - num * bmr;
   console.log(targetBMR)
