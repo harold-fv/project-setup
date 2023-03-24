@@ -76,7 +76,28 @@ fetch('https://api.edamam.com/api/food-database/v2/parser?app_id=' + appeda_Id +
     carbCals = data.parsed[0].food.nutrients.FAT;
     fatCals = data.parsed[0].food.nutrients.PROCNT;
   });
+ displayInfoResults(energyCals, proteinCals, carbCals, fatCals)
 }
+
+function displayInfoResults(energyCals, proteinCals, carbCals, fatCals) {
+  var divResults = document.getElementById('resultsArray')
+  divResults.innerHTML = `
+  <p>Energy Calories: ${energyCals}</p>
+  <p>Protein Calories: ${proteinCals}</p>
+  <p>Carb Calories: ${carbCals}</p>
+  <p>Fat Calories: ${fatCals}</p>
+`;
+}
+
+
+
+
+
+
+
+
+
+
   //created by aarellano
 
 var searchInput = document.getElementById('searchInput')
