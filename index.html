@@ -38,83 +38,59 @@
 			</div>
 
 			<div class="col-12 col-lg-8 item2">
-				<p class="p-margin">Our Nutrition App helps you achieve your fitness goals of toning up, losing weight, or gaining muscle. By inputting your weight, height, gender, and age, you can calculate your Basal Metabolic Rate (BMR) and receive a suggested daily calorie intake. We provide personalized meal plans with a variety of options for both vegetarians and meat-eaters, along with detailed nutritional information to track your progress. Our app makes healthy eating convenient and easy to fit your specific fitness goals. Download our app today to start achieving your goals!</p>
+				<p class="p-margin">Welcome to our Nutrition App! Whether you're looking to tone up, lose weight, or gain muscle, our app is designed to help you achieve your fitness goals. With just a few simple inputs, you can calculate your Basal Metabolic Rate (BMR), which is the amount of energy your body needs to maintain basic functions at rest.
+
+					To get started, simply select your fitness goal from the options provided: toning up, losing weight, or gaining muscle. Then, enter your weight, height, gender, and age in the appropriate fields. Our app will use this information to calculate your BMR and suggest a daily calorie intake to help you achieve your fitness goals.
+					
+					Based on your BMR and fitness goal, our app will provide you with a personalized meal plan tailored to your needs. Whether you're a vegetarian or a meat-eater, our app offers a variety of meal options to suit your preferences. We also provide detailed nutritional information for each meal, so you can track your progress and make adjustments as needed.
+					
+					Our app is designed to make healthy eating easy and convenient. With our personalized meal plans, you can eat delicious, healthy meals that are tailored to your specific fitness goals. So why wait? Download our app today and start achieving your fitness goals!</p>
 			</div>
 
 		</div>
 
 
-
-			<div class="row marginGetStarted">
-				<div class="getStartMargin">
-					<div class="flex col-12">
-						<H2>Getting Started!</H2>
-					</div>
-				</div>
-				
-				<div class="col-12 col-md-5 col-lg-5 item2">
-						<h2>Let's Calculate you BMR!</h2>
-					<form id="bmrCalcForm" action="submitBMR">
-						<div class="catagory">
-							<label for="weight">Weight (kg):</label>
-							<input type="number" id="weight" name="weight" required>
-						</div>
-						
-						<div class="catagory">
-							<label for="height">Height (m):</label>
-							<input type="number" id="height" name="height" required>
-						</div>
-						
-						<div class="catagory">
-							<label for="age">Age:</label>
-							<input type="number" id="age" name="age" required>
-						</div>
-					</form>
-						<div>
-							<label for="gender">Gender:</label>
-							<select id="gender" name="gender" required>
-							<option value="">Select</option>
-							<option value="male">Male</option>
-							<option value="female">Female</option>
-							</select>
-							
-						</div>	
-						<div class="calculate">
-							<input class="btn" type="button" value="Calculate" onclick="bmrbmicalc()">
-							<p id="result"></p>
-						</div>
-							
-				</div>			
-					
-
-
-
-					<div class="col-12 col-md-5 col-lg-5">
-						<div class="container item2">
-							<h2>User goal!</h2>
-
-							<form>	
-								<select id="fitnessGoal" name="fitnessGoal" required>
-								  <option value="">Select</option>
-								  <option id="fatBurn" value="fatBurn">Burn fat!</option>
-								  <option id="tone" value="tone">Tone!</option>
-								  <option id="strengthTrain" value="strengthTrain">Strength Train!</option>
-								</select>
-								<br>
-							</form>
-						</div>
-				
-					</div>
-
-				
+		<div class="row getStartMargin">
+			<div class="flex col-12 col-lg-3 item1">
+				<H2>Getting Started!</H2>
+				<h2>Step One</h2>
 			</div>
 
-				
-			
+			<div class="col-12 col-lg-8 item2">
+				<h2>Let's Calculate you BMR!</h2>
+		<form id="bmrCalcForm" action="submitBMR">
 		
+				<div class="grid-container">
+					<div class="catagory">
+						<label for="weight">Weight (kg):</label>
+						<input type="number" id="weight" name="weight" required>
+					</div>
+					
+					<div class="catagory">
+						<label for="height">Height (m):</label>
+						<input type="number" id="height" name="height" required>
+					</div>
+					
+					<div class="catagory">
+						<label for="age">Age:</label>
+						<input type="number" id="age" name="age" required>
+					</div>
+					<div>
+						<label for="gender">Gender:</label>
+						<select id="gender" name="gender" required>
+						<option value="">Select</option>
+						<option value="male">Male</option>
+						<option value="female">Female</option>
+						</select>
+						<input type="button" value="Calculate" onclick="bmrbmicalc()">
+						<p id="result"></p>
+					</div>	
+						
+				</div>
+		</form>
 		
-	
-
+	</div>
+</div>
 	<!-- this is the nutrition ix api  -->
 <div class="row">
 	
@@ -175,7 +151,15 @@
   <span id="displayBmr"></span>
 </div> -->
 
-
+<form>
+    <select id="fitnessGoal" name="fitnessGoal" required>
+      <option value="">Select</option>
+      <option id="fatBurn" value="fatBurn">Burn fat!</option>
+      <option id="tone" value="tone">Tone!</option>
+      <option id="strengthTrain" value="strengthTrain">Strength Train!</option>
+    </select>
+    <br>
+  </form>
 
   <script src="./assets/js/script.js"></script>
  </body>
