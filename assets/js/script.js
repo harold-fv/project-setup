@@ -157,16 +157,18 @@ function sumArray(resultsArray){
 // Fitness Goal Selection
 targetBMR = 10
 if (fatBurn == true){
-  targetBMR = bmr - .2*BMR;
-  return targetBMR;
+  targetBMR = bmr - .2*bmr;
+  console.log(targetBMR);
 }
 if (tone == true){
   targetBMR = bmr;
-  return targetBMR;
+  console.log(targetBMR);
+
 }
 if ( strengthTrain == true){
-  targetBMR = bmr + .2*BMR;
-  return targetBMR;
+  targetBMR = bmr + .2*bmr;
+  console.log(targetBMR);
+
 }
 
 
