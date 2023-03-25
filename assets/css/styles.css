@@ -21,10 +21,8 @@ header{
    border-radius: .5rem;
    text-shadow: white 2px 1px 2px;
    background-color: lightblue;
-   margin-top: 50px;
-   margin-left: 20px;
-   margin-right: 20px;
-   padding: 20px;
+ margin: 50px;
+   padding: 60px;
 
 }
 
@@ -88,7 +86,7 @@ header{
     
     display: flex;
     align-items: center;
-    height: 400px;
+    height: 600px;
     justify-content: center;
     flex-direction: column;
 }
@@ -103,4 +101,10 @@ justify-content: center;
 .btn {
     border: 1px solid black;
     border-radius: .5rem;
+}
+
+.flex-start {
+    display: flex;
+    align-items: center;
+    justify-content: start;
 }
