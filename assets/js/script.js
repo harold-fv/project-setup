@@ -28,14 +28,14 @@ function bmrbmicalc() {
   var recommendedCalories = bmr * activityFactor;
   var resultString = `Your BMR is ${bmr.toFixed(2)} calories per day.<br>
   Your BMI is ${bmi.toFixed(2)} (${weightStatus}).<br>Recommended daily calorie intake: ${recommendedCalories.toFixed(2)} calories.<br>`;
-  document.getElementById("result").innerHTML = resultString;
+  document.getElementById("result2").innerHTML = resultString;
   displayFoodRecommendations(goal);
   return;
 }
 function displayFoodRecommendations(goal) {
   let foodRecommendations = `<p>Here are some food recommendations based on your fitness goal:</p>`;
   if (goal === "burnfat") {
-      foodRecommendations += `
+      foodRecommendations = `
           <h3>Burn Fat:</h3>
           <ul>
               <li>Lean protein sources (e.g., chicken, turkey, fish, beans, tofu)</li>
@@ -46,7 +46,7 @@ function displayFoodRecommendations(goal) {
           </ul>
       `;
   } else if (goal === "tone") {
-      foodRecommendations += `
+      foodRecommendations = `
           <h3>Tone:</h3>
           <ul>
               <li>Protein-rich foods (e.g., chicken, turkey, fish, beans, tofu, Greek yogurt)</li>
@@ -57,7 +57,7 @@ function displayFoodRecommendations(goal) {
           </ul>
       `;
   } else if (goal === "strengthtrain") {
-      foodRecommendations += `
+      foodRecommendations = `
           <h3>Strength Train:</h3>
           <ul>
               <li>Protein-rich foods (e.g., chicken, turkey, fish, beans, tofu, Greek yogurt) to support muscle growth and repair.</li>
@@ -68,10 +68,10 @@ function displayFoodRecommendations(goal) {
           </ul>
       `;
   } else {
-      document.getElementById("result1").innerHTML += "<p>Please select a fitness goal.</p>";
+      document.getElementById("result").innerHTML = "<p>Please select a fitness goal.</p>";
       return;
   }
-  document.getElementById("result1").innerHTML += foodRecommendations;
+  document.getElementById("result").innerHTML = foodRecommendations;
 }
 //possible duplicate (extra console log)
 var appedaKey = '96c9812e34d70f8817c3c0855d4ebb4a';
