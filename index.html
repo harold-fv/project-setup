@@ -87,10 +87,17 @@
 							<option value="1.725">Very active (hard exercise 6-7 days/week)</option>
 							<option value="1.9">Super active (very hard exercise and a physical job)</option>
 							</select>
+							<label for="goal">Fitness Goal:</label>
+							<select id="goal" required>
+								<option value="">Select your goal</option>
+								<option value="burnfat">Burn Fat</option>
+								<option value="tone">Tone</option>
+								<option value="strengthtrain">Strength Train</option>
+							</select>
 						</div>	
 						<div class="calculate">
-							<input class="btn" type="button" value="Calculate" onclick="bmrbmicalc()">
-							<p id="result"></p>
+							<input class= "btn" type="button" value="Calculate" onclick="bmrbmicalc()">
+							
 						</div>
 							
 				</div>			
@@ -101,16 +108,13 @@
 					<div class="col-12 col-md-12 col-lg-5">
 						
 						<div class="container item2">
-					
-								<label for="goal"><h2>Fitness Goal:</h2></label>
-								<select id="goal" required>
-									<option value="">Select your goal</option>
-									<option value="burnfat">Burn Fat</option>
-									<option value="tone">Tone</option>
-									<option value="strengthtrain">Strength Train</option>
-								</select>
-								<input class= "btn" type="button" value="Calculate" onclick="bmrbmicalc()">
-								<p id="result1"></p>
+							
+							<p id="result2"></p>
+
+								<div class="result3">
+									<p id="result"></p>
+								</div>
+								
 							
 						</div>
 				
