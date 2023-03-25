@@ -18,10 +18,13 @@ header{
 
 .item2{
    line-height: 3rem;
-   padding: 40px 30px;
    border-radius: .5rem;
-   background-color: lightblue;
    text-shadow: white 2px 1px 2px;
+   background-color: lightblue;
+   margin-top: 50px;
+   margin-left: 20px;
+   margin-right: 20px;
+   padding: 20px;
 
 }
 
@@ -32,9 +35,10 @@ header{
 }
 .p-margin {
     padding: 10px;
+    margin: 30px;
 }
 .getStartMargin{
-    margin: 150px 0;
+    margin-top: 150px;
 }
 .grid-container{
     display: flex;
@@ -57,8 +61,10 @@ header{
 }
 .flex {
     display: flex;
-    flex-direction: column;
-row-gap: 10px;
+    align-items: center;
+    justify-content: center;
+    
+
 }
 .navbar {
     border-radius: .5rem;
@@ -72,4 +78,29 @@ row-gap: 10px;
     flex-direction: column;
     margin: 90px;
    
+}
+
+.marginGetStarted{
+    margin: 30px 90px;
+}
+
+.container{
+    
+    display: flex;
+    align-items: center;
+    height: 400px;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.calculate {
+display: flex;
+align-items: center;
+justify-content: center;
+
+}
+
+.btn {
+    border: 1px solid black;
+    border-radius: .5rem;
 }
