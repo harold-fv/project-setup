@@ -1,4 +1,3 @@
-
 //created by harold
 var bmr = 0;
 var bmi = 0;
@@ -7,7 +6,8 @@ function bmrbmicalc() {
   var height = Number(document.getElementById("height").value);
   var age = Number(document.getElementById("age").value);
   var gender = document.getElementById("gender").value;
-
+  var activityFactor = Number(document.getElementById("activity").value);
+  var goal = document.getElementById("goal").value;
   if (gender === 'male') {
     bmr = 66.5 + (13.75 * weight) + (5.003 * height) - (6.75 * age);
   } else if (gender === 'female') {
@@ -16,21 +16,69 @@ function bmrbmicalc() {
     document.getElementById("result").innerHTML = "Please select your gender.";
     return;
   }
-
   bmi = weight / (height ** 2);
-  var resultString = `Your BMR is ${bmr.toFixed(2)} and your calories per day.<br>Your BMI is ${bmi.toFixed(2)}.`;
+  var weightStatus = "";
+  if (bmi < 18.5) {
+      weightStatus = "underweight";
+  } else if (bmi >= 18.5 && bmi < 24.9) {
+      weightStatus = "normal";
+  } else {
+      weightStatus = "overweight";
+  }
+  var recommendedCalories = bmr * activityFactor;
+  var resultString = `Your BMR is ${bmr.toFixed(2)} calories per day.<br>
+  Your BMI is ${bmi.toFixed(2)} (${weightStatus}).<br>Recommended daily calorie intake: ${recommendedCalories.toFixed(2)} calories.<br>`;
   document.getElementById("result").innerHTML = resultString;
-return ;
+  displayFoodRecommendations(goal);
+  return;
 }
-
+function displayFoodRecommendations(goal) {
+  let foodRecommendations = `<p>Here are some food recommendations based on your fitness goal:</p>`;
+  if (goal === "burnfat") {
+      foodRecommendations += `
+          <h3>Burn Fat:</h3>
+          <ul>
+              <li>Lean protein sources (e.g., chicken, turkey, fish, beans, tofu)</li>
+              <li>Fiber-rich foods (e.g., vegetables, fruits, whole grains, legumes)</li>
+              <li>Healthy fats (e.g., nuts, seeds, avocado, olive oil)</li>
+              <li>Low-sugar and low-calorie foods</li>
+              <li>Drink plenty of water to stay hydrated</li>
+          </ul>
+      `;
+  } else if (goal === "tone") {
+      foodRecommendations += `
+          <h3>Tone:</h3>
+          <ul>
+              <li>Protein-rich foods (e.g., chicken, turkey, fish, beans, tofu, Greek yogurt)</li>
+              <li>Complex carbohydrates (e.g., whole grains like brown rice, quinoa, whole wheat bread)</li>
+              <li>Fiber-rich foods (e.g., vegetables, fruits, legumes)</li>
+              <li>Healthy fats (e.g., nuts, seeds, avocado, olive oil)</li>
+              <li>Stay hydrated by drinking plenty of water throughout the day</li>
+          </ul>
+      `;
+  } else if (goal === "strengthtrain") {
+      foodRecommendations += `
+          <h3>Strength Train:</h3>
+          <ul>
+              <li>Protein-rich foods (e.g., chicken, turkey, fish, beans, tofu, Greek yogurt) to support muscle growth and repair.</li>
+              <li>Complex carbohydrates (e.g., whole grains like brown rice, quinoa, whole wheat bread) for sustained energy during workouts.</li>
+              <li>Healthy fats (e.g., nuts, seeds, avocado, olive oil) to support hormone production and provide energy for workouts.</li>
+              <li>Fiber-rich foods (e.g., vegetables, fruits, legumes) to support digestion and keep you feeling full.</li>
+              <li>Stay hydrated by drinking plenty of water throughout the day, especially before, during, and after workouts.</li>
+          </ul>
+      `;
+  } else {
+      document.getElementById("result1").innerHTML += "<p>Please select a fitness goal.</p>";
+      return;
+  }
+  document.getElementById("result1").innerHTML += foodRecommendations;
+}
 //possible duplicate (extra console log)
 var appedaKey = '96c9812e34d70f8817c3c0855d4ebb4a';
 var appeda_Id = 'a230f40d';
 var ingredients = document.getElementById("ingredient");
 var searchBtn = document.getElementById("searchBtn");
-
 searchBtn.addEventListener('click', getResults);
-
 function getResults() {
   //sample fetch request
   fetch('https://api.edamam.com/api/food-database/v2/parser?app_id=' + appeda_Id + '&app_key=' + appedaKey + '&ingr=' + searchInput.value, {
@@ -43,25 +91,25 @@ function getResults() {
       console.log(data);
       console.log(data.calories); //console logging accessing calories from data response
       console.log(data.totalNutrientsKCal);
-    }); 
+    });
 }
-
 //Created by mNova
 var appedaKey = '96c9812e34d70f8817c3c0855d4ebb4a';
 var appeda_Id = 'a230f40d';
 var searchInput = document.getElementById("searchInput");
 var searchBtn = document.getElementById("searchBtn");
-
 searchBtn.addEventListener('click', getEdamamResults);
-
-
 let energyCals = 0;
 let proteinCals = 0;
 let carbCals = 0;
 let fatCals = 0;
 let meal = []
+//created by Harold
+let totalEnergyCal=0;
+let totalproteinCals=0;
+let totalcarbCals=0;
+let totalfatCals=0;
 function getEdamamResults() {
-
 fetch('https://api.edamam.com/api/food-database/v2/parser?app_id=' + appeda_Id + '&app_key=' + appedaKey + '&ingr=' + searchInput.value, {
   method: 'GET', //GET is the default.
 })
@@ -71,49 +119,47 @@ fetch('https://api.edamam.com/api/food-database/v2/parser?app_id=' + appeda_Id +
   .then(function (data) {
     console.log(data);
     console.log(data.parsed[0].food.nutrients);
-
     energyCals = data.parsed[0].food.nutrients.ENERC_KCAL;
     proteinCals = data.parsed[0].food.nutrients.PROCNT;
     carbCals = data.parsed[0].food.nutrients.FAT;
     fatCals = data.parsed[0].food.nutrients.PROCNT;
     var item = {
       food: data.text,
-      energy: energyCals, 
+      energy: energyCals,
       protein: proteinCals,
       carbs: carbCals,
       fat: fatCals
-    
     }
-
+  console.log(energyCals,proteinCals,carbCals,fatCals)
   meal.push(item)
   console.log(meal)
   sumArray(meal)
     displayInfoResults(energyCals, proteinCals, carbCals, fatCals)
   });
- 
 }
-
 function displayInfoResults(energyCals, proteinCals, carbCals, fatCals) {
   var divResults = document.getElementById('resultsArray')
+  console.log(divResults);
   divResults.innerHTML += `
   <p>Energy Calories: ${energyCals}</p>
   <p>Protein Calories: ${proteinCals}</p>
   <p>Carb Calories: ${carbCals}</p>
   <p>Fat Calories: ${fatCals}</p>
 `;
+ var divTotal = document.getElementById('totalCal');
+ //created by Harold
+ totalEnergyCal = totalEnergyCal + energyCals;
+ totalproteinCals =  totalproteinCals + proteinCals;
+ totalcarbCals = totalcarbCals + carbCals;
+ totalfatCals =   totalfatCals + fatCals;
+ divTotal.innerHTML = `
+ <p>Total Energy Calories: ${totalEnergyCal}</p>
+ <p>Total Protein Calories: ${ totalproteinCals}</p>
+ <p>Total Carb Calories: ${ totalcarbCals}</p>
+ <p>Total Fat Calories: ${ totalfatCals }</p>`
+;
 }
-
-
-
-
-
-
-
-
-
-
   //created by aarellano
-
 var searchInput = document.getElementById('searchInput')
 var searchBtn = document.getElementById('searchBtn')
 var searchResult = document.getElementById('searchResult')
@@ -147,8 +193,7 @@ function displayNutrix(image, foodName) {
               <img src="${image}">`;
               searchResult.innerHTML = html;
 }
-
-// by michael    
+// by michael
 function sumArray(resultsArray){
   let sum = 0 // the sum is initialed to 0
   for (let i = 0; i < resultsArray.length; i++) {
@@ -162,17 +207,14 @@ function sumArray(resultsArray){
   // iteration 5: 14 + -3 => sum = 11
   }
   console.log(sum) // 11
-  System.out.println("Sum value of array elements is : " + sum);
+  // System.out.println("Sum value of array elements is : " + sum);
   // return sum
   return sum
 }
-
-
 var fitnessGoal = document.getElementById('fitnessGoal')
 var fatBurn = document.getElementById('fatBurn')
 var tone = document.getElementById('tone')
 var strengthTrain = document.getElementById('strengthTrain')
-
 var num = 0.2
 fitnessGoal.addEventListener('change', function(){
 // Fitness Goal Selection
@@ -180,20 +222,13 @@ targetBMR = 0
 if (fitnessGoal.value == 'fatBurn'){
   targetBMR = bmr - num * bmr;
   console.log(targetBMR)
-  
-  
 }
 if (fitnessGoal.value == 'tone'){
   targetBMR = bmr;
   console.log(targetBMR)
-  
 }
 if ( fitnessGoal.value == 'strengthTrain'){
   targetBMR = bmr + num * bmr;
   console.log(targetBMR)
-  
 }
 })
-
-
-
