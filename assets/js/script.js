@@ -1,5 +1,8 @@
+// 3pm 3/26/2023: Section 1: Everyone please on getting the user inputs to output values according to functions below, and successfully display results.
+//Please try to contain the majority of your code within this comments and the end of section comment market.  If code edits outside of the section are done, please note every line.
+
 //created by harold
-var bmr = 0;
+var basalBMR = 0;
 var bmi = 0;
 function bmrbmicalc() {
   var weight = Number(document.getElementById("weight").value);
@@ -9,9 +12,9 @@ function bmrbmicalc() {
   var activityFactor = Number(document.getElementById("activity").value);
   var goal = document.getElementById("goal").value;
   if (gender === 'male') {
-    bmr = 66.5 + (13.75 * weight) + (5.003 * height) - (6.75 * age);
+    basalBMR = 66.5 + (13.75 * weight) + (5.003 * height) - (6.75 * age);
   } else if (gender === 'female') {
-    bmr = 655.1 + (9.563 * weight) + (1.850 * height) - (4.676 * age);
+    basalBMR = 655.1 + (9.563 * weight) + (1.850 * height) - (4.676 * age);
   } else {
     document.getElementById("result").innerHTML = "Please select your gender.";
     return;
@@ -25,13 +28,43 @@ function bmrbmicalc() {
   } else {
       weightStatus = "overweight";
   }
-  var recommendedCalories = bmr * activityFactor;
-  var resultString = `Your BMR is ${bmr.toFixed(2)} calories per day.<br>
+  var recommendedCalories = targetBMR;
+  var resultString = `Your BMR is ${basalBMR.toFixed(2)} calories per day.<br>
   Your BMI is ${bmi.toFixed(2)} (${weightStatus}).<br>Recommended daily calorie intake: ${recommendedCalories.toFixed(2)} calories.<br>`;
   document.getElementById("result2").innerHTML = resultString;
   displayFoodRecommendations(goal);
   return;
 }
+
+
+var fitnessGoal = document.getElementById('goal')
+var fatBurn = document.getElementById('fatBurn')
+var tone = document.getElementById('tone')
+var strengthTrain = document.getElementById('strengthTrain')
+var num = 0.2
+fitnessGoal.addEventListener('change', function(){
+// Fitness Goal Selection
+
+if (fitnessGoal.value == 'burnfat'){
+  targetBMR = basalBMR - 0.2 * basalBMR;
+  console.log(targetBMR)
+}
+if (fitnessGoal.value == 'tone'){
+  targetBMR = basalBMR;
+  console.log(targetBMR)
+}
+if ( fitnessGoal.value == 'strengthtrain'){
+  targetBMR = basalBMR + 0.2 * basalBMR;
+  console.log(targetBMR)
+  
+}
+})
+
+//END OF MIKE'S WORK SECTION
+
+
+// 3pm 3/26/2023: HAROLD WORK ON LINES 65 (STARTING WITH FUNCTION DISPLAY FOOD RECOMMENDATIONS)
+//START OF HAROLD'S SECTION
 function displayFoodRecommendations(goal) {
   let foodRecommendations = `<p>Here are some food recommendations based on your fitness goal:</p>`;
   if (goal === "burnfat") {
@@ -73,6 +106,10 @@ function displayFoodRecommendations(goal) {
   }
   document.getElementById("result").innerHTML = foodRecommendations;
 }
+
+//END OF HAROLD'S WORK SECTION
+//START OF SHABAB'S WORK SECTION
+
 //possible duplicate (extra console log)
 var appedaKey = '96c9812e34d70f8817c3c0855d4ebb4a';
 var appeda_Id = 'a230f40d';
@@ -104,6 +141,7 @@ let proteinCals = 0;
 let carbCals = 0;
 let fatCals = 0;
 let meal = []
+
 //created by Harold
 let totalEnergyCal=0;
 let totalproteinCals=0;
@@ -174,6 +212,18 @@ function displayInfoResults(energyCals, proteinCals, carbCals, fatCals) {
   <button type="button" id="addFood">Add</button> 
 `;
 
+//Added by mike to display total calories of search query food
+/*
+function displayFoodTotalCaloriesOnly(energyCals, proteinCals, carbCals, fatCals) {
+
+  var totalCals = document.getElementById('resultsArray')
+  console.log(totalCals);
+  totalCals.innerHTML = `
+  <h2>${searchInput.value}</h2>
+  <p>Total Calories: ${energyCals + proteinCals + carbCals + fatCals }</p>
+  <button type="button" id="addFood">Add</button> 
+`;
+*/
 //added by Harold. This is to add the selected search food to the today calories
 let addFoodEl = document.querySelector("#addFood");
 addFoodEl.addEventListener("click", addToTotalCard)
@@ -202,6 +252,27 @@ function clearResults() {
 }
 
 clearBtn.addEventListener('click', clearResults);
+/*
+// To set object into local storage (mike 3.26 1:45pm)
+
+resultsArray = {}
+
+var entryLogLocalStorage = JSON.stringify(resultsArray);
+
+localStorage.setItem('testJSON', entryLogLocalStorage);
+
+
+console.log(userStringFromLocalStorage);
+// To retrieve object from local storage (mike 3.26 1:44pm)
+var entryLogLocalStorage = localStorage.getItem('testJSON');
+
+let obj = JSON.parse(text);
+
+document.getElementById("localStorageResults").innerHTML = obj.calories;
+console.log(userStringFromLocalStorage);
+// Outputs the user as an object to the console
+
+*/
 
   //created by aarellano
 var searchInput = document.getElementById('searchInput')
@@ -255,28 +326,6 @@ function sumArray(resultsArray){
   // return sum
   return sum
 }
-var fitnessGoal = document.getElementById('goal')
-var fatBurn = document.getElementById('fatBurn')
-var tone = document.getElementById('tone')
-var strengthTrain = document.getElementById('strengthTrain')
-var num = 0.2
-fitnessGoal.addEventListener('change', function(){
-// Fitness Goal Selection
-targetBMR = 0
-if (fitnessGoal.value == 'burnfat'){
-  targetBMR = bmr - num * bmr;
-  console.log(targetBMR)
-}
-if (fitnessGoal.value == 'tone'){
-  targetBMR = bmr;
-  console.log(targetBMR)
-}
-if ( fitnessGoal.value == 'strengthtrain'){
-  targetBMR = bmr + num * bmr;
-  console.log(targetBMR)
-  
-}
-})
 
 
 // Get the modal
@@ -304,5 +353,3 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
-
-
