@@ -137,26 +137,58 @@ fetch('https://api.edamam.com/api/food-database/v2/parser?app_id=' + appeda_Id +
     displayInfoResults(energyCals, proteinCals, carbCals, fatCals)
   });
 }
-function displayInfoResults(energyCals, proteinCals, carbCals, fatCals) {
-  var divResults = document.getElementById('resultsArray')
-  console.log(divResults);
-  divResults.innerHTML += `
-  <p>Energy Calories: ${energyCals}</p>
-  <p>Protein Calories: ${proteinCals}</p>
-  <p>Carb Calories: ${carbCals}</p>
-  <p>Fat Calories: ${fatCals}</p>
-`;
- var divTotal = document.getElementById('totalCal');
+
+//added by Harold. This will total the Calories 3/25
+function addToTotalCard(){
+  console.log("Inside addtoTotalCard");
+  var divTotal = document.getElementById('totalCal');
  //created by Harold
  totalEnergyCal = totalEnergyCal + energyCals;
  totalproteinCals =  totalproteinCals + proteinCals;
  totalcarbCals = totalcarbCals + carbCals;
  totalfatCals =   totalfatCals + fatCals;
+
+//added the total calories inside the function by harold 3/25
  divTotal.innerHTML = `
  <p>Total Energy Calories: ${totalEnergyCal}</p>
  <p>Total Protein Calories: ${ totalproteinCals}</p>
  <p>Total Carb Calories: ${ totalcarbCals}</p>
  <p>Total Fat Calories: ${ totalfatCals }</p>`
+ console.log(divTotal);
+;
+}
+
+
+
+function displayInfoResults(energyCals, proteinCals, carbCals, fatCals) {
+  
+  //added  by Harold.  <h2>${searchInput.value}</h2> and <button type="button" id="addFood">Add</button>  
+  var divResults = document.getElementById('resultsArray')
+  console.log(divResults);
+  divResults.innerHTML = `
+  <h2>${searchInput.value}</h2>
+  <p>Energy Calories: ${energyCals}</p>
+  <p>Protein Calories: ${proteinCals}</p>
+  <p>Carb Calories: ${carbCals}</p>
+  <p>Fat Calories: ${fatCals}</p>
+  <button type="button" id="addFood">Add</button> 
+`;
+
+//added by Harold. This is to add the selected search food to the today calories
+let addFoodEl = document.querySelector("#addFood");
+addFoodEl.addEventListener("click", addToTotalCard)
+
+//  var divTotal = document.getElementById('totalCal');
+//  //created by Harold
+//  totalEnergyCal = totalEnergyCal + energyCals;
+//  totalproteinCals =  totalproteinCals + proteinCals;
+//  totalcarbCals = totalcarbCals + carbCals;
+//  totalfatCals =   totalfatCals + fatCals;
+//  divTotal.innerHTML = `
+//  <p>Total Energy Calories: ${totalEnergyCal}</p>
+//  <p>Total Protein Calories: ${ totalproteinCals}</p>
+//  <p>Total Carb Calories: ${ totalcarbCals}</p>
+//  <p>Total Fat Calories: ${ totalfatCals }</p>`
 ;
 }
   //created by aarellano
