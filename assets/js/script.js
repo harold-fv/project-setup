@@ -191,6 +191,18 @@ addFoodEl.addEventListener("click", addToTotalCard)
 //  <p>Total Fat Calories: ${ totalfatCals }</p>`
 ;
 }
+
+//created by Harold. Clear button
+var clearBtn = document.getElementById('clearBtn');
+function clearResults() {
+    var divResults = document.getElementById('resultsArray');
+    divResults.innerHTML = '';
+    var divTotal = document.getElementById('totalCal');
+    divTotal.innerHTML = '';
+}
+
+clearBtn.addEventListener('click', clearResults);
+
   //created by aarellano
 var searchInput = document.getElementById('searchInput')
 var searchBtn = document.getElementById('searchBtn')
