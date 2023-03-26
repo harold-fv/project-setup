@@ -272,6 +272,10 @@ function clearResults() {
     divResults.innerHTML = '';
     var divTotal = document.getElementById('totalCal');
     divTotal.innerHTML = '';
+    totalEnergyCal = 0;
+    totalproteinCals =  0;
+    totalcarbCals = 0;
+    totalfatCals =0 ;
 }
 
 clearBtn.addEventListener('click', clearResults);
