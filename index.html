@@ -51,9 +51,10 @@
 						<H2>Getting Started!</H2>
 					</div>
 				</div>
-				
-				<div class="col-12 col-md-5 col-lg-5 item2">
+	
+				<div class="col-12 col-md-12 col-lg-5 item2">
 						<h2>Let's Calculate you BMR!</h2>
+						
 					<form id="bmrCalcForm" action="submitBMR">
 						<div class="catagory">
 							<label for="weight">Weight (kg):</label>
@@ -62,7 +63,7 @@
 						
 						<div class="catagory">
 							<label for="height">Height (m):</label>
-							<input type="number" id="height" name="height" required>
+            				<input type="number" id="height" name="height" required>
 						</div>
 						
 						<div class="catagory">
@@ -77,11 +78,26 @@
 							<option value="male">Male</option>
 							<option value="female">Female</option>
 							</select>
-							
+							<br>
+							<label for="activity">Activity Level:</label>
+							<select id="activity" required>
+							<option value="1.2">Sedentary (little or no exercise)</option>
+							<option value="1.375">Lightly active (light exercise or sports 1-3 days/week)</option>
+							<option value="1.55">Moderately active (moderate exercise 3-5 days/week)</option>
+							<option value="1.725">Very active (hard exercise 6-7 days/week)</option>
+							<option value="1.9">Super active (very hard exercise and a physical job)</option>
+							</select>
+							<label for="goal">Fitness Goal:</label>
+							<select id="goal" required>
+								<option value="">Select your goal</option>
+								<option value="burnfat">Burn Fat</option>
+								<option value="tone">Tone</option>
+								<option value="strengthtrain">Strength Train</option>
+							</select>
 						</div>	
 						<div class="calculate">
-							<input class="btn" type="button" value="Calculate" onclick="bmrbmicalc()">
-							<p id="result"></p>
+							<input class= "btn" type="button" value="Calculate" onclick="bmrbmicalc()">
+							
 						</div>
 							
 				</div>			
@@ -89,19 +105,17 @@
 
 
 
-					<div class="col-12 col-md-5 col-lg-5">
+					<div class="col-12 col-md-12 col-lg-5">
+						
 						<div class="container item2">
-							<h2>User goal!</h2>
+							
+							<p id="result2"></p>
 
-							<form>	
-								<select id="fitnessGoal" name="fitnessGoal" required>
-								  <option value="">Select</option>
-								  <option id="fatBurn" value="fatBurn">Burn fat!</option>
-								  <option id="tone" value="tone">Tone!</option>
-								  <option id="strengthTrain" value="strengthTrain">Strength Train!</option>
-								</select>
-								<br>
-							</form>
+								<div class="result3">
+									<p id="result"></p>
+								</div>
+								
+							
 						</div>
 				
 					</div>
@@ -121,6 +135,9 @@
 	<div class="nutrix">
 		<input type="text" id="searchInput">
 		<button id="searchBtn">Search</button>
+		    <!-- Added by harold -->
+			<button id="clearBtn">Clear</button>
+	
 		<div id="searchResult"></div>
 	</div>
 	
@@ -128,54 +145,42 @@
 		
 		
 
-<div id="resultsArray">
 
-</div>
+<!-- //created by Harold -->
 
+
+
+
+
+
+
+
+<!--by Shabab //This is a sample of a bootstrap modal,
+//but we want this to be the window that
+//pops up with all the nutrition recommendations,
+//meal recs, activity recs, nutrition/advice, specific foods, etc.
+// -->
+<div class="container">
+	
+	<button type="button" class="btn btn-info btn-lg" id="myBtn">Get Recommendation</button>
+	<div class="modal" id="myModal">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <span class="close">&times;</span>
+		  <h4 class="modal-title">Recommendation:</h4>
+		</div>
+		<div class="modal-body">
+		  <p>Live Healthy.</p>
+		</div>
+	  </div>
+	</div>
+  </div>
+  
 
 
 	
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-
-  <!-- <h1>Edamam API Demo</h1>
-    <label for="ingredient">Enter an ingredient:</label>
-    <input type="text" id="ingredient" name="ingredient" required>
-    <br>
-    <button id="submitBmrBtn">Get Results</button> -->
-<!-- 
-  <label for="gender"> Select you gender</label>
-  <select name="gender">
-    <option value="none" selected>Gender</option>
-    <option value="male">Male</option>
-    <option value="female">Female</option>
-  </select>
-
-  <div>
-    <label class="space" for="text">Weight:</label>
-    <span><input id="weightKg"type="text"> kg</span>
-  </div>
-
-  <div>
-    <label class="space" for="text">Height:</label>
-    <span><input id="heightMeters" type="text"> meters</span>
-  </div>
-
-  <div>
-    <label class="space" for="text">Age:</label>
-    <span><input id="ageYears"type="text"> years</span>
-  </div>
-   <input id = "ingredient" type ="text"> 
-  <button id= "submitBmrBtn" type="submit" value="Submit"> Search </button>
-    <div id = "displayResults"> </div>
-  
-</form>
-    
-<div>
-  <span id="displayBmr"></span>
-</div> -->
-
-
   <script src="./assets/js/script.js"></script>
  </body>
  </html> 
