@@ -1,12 +1,14 @@
-//created by harold
 var bmr = 0;
 var bmi = 0;
+var targetBMR = 0;
+var activityFactor = 0;
+
 function bmrbmicalc() {
   var weight = Number(document.getElementById("weight").value);
   var height = Number(document.getElementById("height").value);
   var age = Number(document.getElementById("age").value);
   var gender = document.getElementById("gender").value;
-  var activityFactor = Number(document.getElementById("activity").value);
+  activityFactor = Number(document.getElementById("activity").value);
   var goal = document.getElementById("goal").value;
   if (gender === 'male') {
     bmr = 66.5 + (13.75 * weight) + (5.003 * height) - (6.75 * age);
@@ -25,13 +27,69 @@ function bmrbmicalc() {
   } else {
       weightStatus = "overweight";
   }
-  var recommendedCalories = bmr * activityFactor;
+  if (goal === 'burnfat') {
+    targetBMR = bmr - 0.2 * bmr;
+  } else if (goal === 'tone') {
+    targetBMR = bmr;
+  } else if (goal === 'strengthtrain') {
+    targetBMR = bmr + 0.2 * bmr;
+  } else {
+    document.getElementById("result").innerHTML = "Please select your fitness goal.";
+    return;
+  }
+  var recommendedCalories = targetBMR * activityFactor;
   var resultString = `Your BMR is ${bmr.toFixed(2)} calories per day.<br>
   Your BMI is ${bmi.toFixed(2)} (${weightStatus}).<br>Recommended daily calorie intake: ${recommendedCalories.toFixed(2)} calories.<br>`;
   document.getElementById("result2").innerHTML = resultString;
   displayFoodRecommendations(goal);
-  return;
 }
+
+var fitnessGoal = document.getElementById('goal');
+var activityFactor = Number(document.getElementById("activity").value);
+
+fitnessGoal.addEventListener('change', function(){
+  var goal = fitnessGoal.value;
+  
+  // Update targetBMR based on user's fitness goal selection
+  if (goal === 'burnfat') {
+    targetBMR = bmr - 0.2 * bmr;
+  } else if (goal === 'tone') {
+    targetBMR = bmr;
+  } else if (goal === 'strengthtrain') {
+    targetBMR = bmr + 0.2 * bmr;
+  } else {
+    document.getElementById("result").innerHTML = "Please select your fitness goal.";
+    return;
+  }
+  
+  // Update recommended calorie intake based on the new targetBMR value
+  var recommendedCalories = targetBMR * activityFactor;
+  
+  // Update result string with new recommended calorie intake value
+  var weightStatus = "";
+  if (bmi < 18.5) {
+      weightStatus = "underweight";
+  } else if (bmi >= 18.5 && bmi < 24.9) {
+      weightStatus = "normal";
+  } else {
+      weightStatus = "overweight";
+  }
+  var resultString = `Your BMR is ${bmr.toFixed(2)} calories per day.<br>
+  Your BMI is ${bmi.toFixed(2)} (${weightStatus}).<br>Recommended daily calorie intake: ${recommendedCalories.toFixed(2)} calories.<br>`;
+  document.getElementById("result2").innerHTML = resultString;
+  displayFoodRecommendations(goal);
+});
+
+
+
+
+
+
+
+
+
+
+
 function displayFoodRecommendations(goal) {
   let foodRecommendations = `<p>Here are some food recommendations based on your fitness goal:</p>`;
   if (goal === "burnfat") {
@@ -211,28 +269,7 @@ function sumArray(resultsArray){
   // return sum
   return sum
 }
-var fitnessGoal = document.getElementById('goal')
-var fatBurn = document.getElementById('fatBurn')
-var tone = document.getElementById('tone')
-var strengthTrain = document.getElementById('strengthTrain')
-var num = 0.2
-fitnessGoal.addEventListener('change', function(){
-// Fitness Goal Selection
-targetBMR = 0
-if (fitnessGoal.value == 'burnfat'){
-  targetBMR = bmr - num * bmr;
-  console.log(targetBMR)
-}
-if (fitnessGoal.value == 'tone'){
-  targetBMR = bmr;
-  console.log(targetBMR)
-}
-if ( fitnessGoal.value == 'strengthtrain'){
-  targetBMR = bmr + num * bmr;
-  console.log(targetBMR)
-  
-}
-})
+
 
 
 // Get the modal
