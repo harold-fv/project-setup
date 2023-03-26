@@ -1,20 +1,20 @@
-// 3pm 3/26/2023: Section 1: Everyone please on getting the user inputs to output values according to functions below, and successfully display results.
-//Please try to contain the majority of your code within this comments and the end of section comment market.  If code edits outside of the section are done, please note every line.
 
-//created by harold
-var basalBMR = 0;
+var bmr = 0;
 var bmi = 0;
+var targetBMR = 0;
+var activityFactor = 0;
+
 function bmrbmicalc() {
   var weight = Number(document.getElementById("weight").value);
   var height = Number(document.getElementById("height").value);
   var age = Number(document.getElementById("age").value);
   var gender = document.getElementById("gender").value;
-  var activityFactor = Number(document.getElementById("activity").value);
+  activityFactor = Number(document.getElementById("activity").value);
   var goal = document.getElementById("goal").value;
   if (gender === 'male') {
-    basalBMR = 66.5 + (13.75 * weight) + (5.003 * height) - (6.75 * age);
+    bmr = 66.5 + (13.75 * weight) + (5.003 * height) - (6.75 * age);
   } else if (gender === 'female') {
-    basalBMR = 655.1 + (9.563 * weight) + (1.850 * height) - (4.676 * age);
+    bmr = 655.1 + (9.563 * weight) + (1.850 * height) - (4.676 * age);
   } else {
     document.getElementById("result").innerHTML = "Please select your gender.";
     return;
@@ -28,37 +28,60 @@ function bmrbmicalc() {
   } else {
       weightStatus = "overweight";
   }
-  var recommendedCalories = targetBMR;
-  var resultString = `Your BMR is ${basalBMR.toFixed(2)} calories per day.<br>
+  if (goal === 'burnfat') {
+    targetBMR = bmr - 0.2 * bmr;
+  } else if (goal === 'tone') {
+    targetBMR = bmr;
+  } else if (goal === 'strengthtrain') {
+    targetBMR = bmr + 0.2 * bmr;
+  } else {
+    document.getElementById("result").innerHTML = "Please select your fitness goal.";
+    return;
+  }
+  var recommendedCalories = targetBMR * activityFactor;
+  var resultString = `Your BMR is ${bmr.toFixed(2)} calories per day.<br>
   Your BMI is ${bmi.toFixed(2)} (${weightStatus}).<br>Recommended daily calorie intake: ${recommendedCalories.toFixed(2)} calories.<br>`;
   document.getElementById("result2").innerHTML = resultString;
   displayFoodRecommendations(goal);
-  return;
 }
 
+var fitnessGoal = document.getElementById('goal');
+var activityFactor = Number(document.getElementById("activity").value);
 
-var fitnessGoal = document.getElementById('goal')
-var fatBurn = document.getElementById('fatBurn')
-var tone = document.getElementById('tone')
-var strengthTrain = document.getElementById('strengthTrain')
-var num = 0.2
 fitnessGoal.addEventListener('change', function(){
-// Fitness Goal Selection
-
-if (fitnessGoal.value == 'burnfat'){
-  targetBMR = basalBMR - 0.2 * basalBMR;
-  console.log(targetBMR)
-}
-if (fitnessGoal.value == 'tone'){
-  targetBMR = basalBMR;
-  console.log(targetBMR)
-}
-if ( fitnessGoal.value == 'strengthtrain'){
-  targetBMR = basalBMR + 0.2 * basalBMR;
-  console.log(targetBMR)
+  var goal = fitnessGoal.value;
   
-}
-})
+  // Update targetBMR based on user's fitness goal selection
+  if (goal === 'burnfat') {
+    targetBMR = bmr - 0.2 * bmr;
+  } else if (goal === 'tone') {
+    targetBMR = bmr;
+  } else if (goal === 'strengthtrain') {
+    targetBMR = bmr + 0.2 * bmr;
+  } else {
+    document.getElementById("result").innerHTML = "Please select your fitness goal.";
+    return;
+  }
+  
+  // Update recommended calorie intake based on the new targetBMR value
+  var recommendedCalories = targetBMR * activityFactor;
+  
+  // Update result string with new recommended calorie intake value
+  var weightStatus = "";
+  if (bmi < 18.5) {
+      weightStatus = "underweight";
+  } else if (bmi >= 18.5 && bmi < 24.9) {
+      weightStatus = "normal";
+  } else {
+      weightStatus = "overweight";
+  }
+  var resultString = `Your BMR is ${bmr.toFixed(2)} calories per day.<br>
+  Your BMI is ${bmi.toFixed(2)} (${weightStatus}).<br>Recommended daily calorie intake: ${recommendedCalories.toFixed(2)} calories.<br>`;
+  document.getElementById("result2").innerHTML = resultString;
+  displayFoodRecommendations(goal);
+});
+
+
 
 //END OF MIKE'S WORK SECTION
 
