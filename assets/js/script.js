@@ -162,7 +162,7 @@ function sumArray(resultsArray){
   // iteration 5: 14 + -3 => sum = 11
   }
   console.log(sum) // 11
-  System.out.println("Sum value of array elements is : " + sum);
+ // System.out.println("Sum value of array elements is : " + sum);
   // return sum
   return sum
 }
