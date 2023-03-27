@@ -5,14 +5,11 @@ We created a variable user fitness nutrition recommendation engine that gives pe
 
 ## URL
 
-
 The deployed application can be access at
-
 [URL]( https://harold-fv.github.io/project-setup/)
 
 
 ## Description
-
 
 The personalized nutrition recommendation engine is powered by 4 primary components.
 
@@ -22,7 +19,6 @@ C Searchbox and foodlog that allows the user to send their search query to the A
 D A modal to display recommendations based on values outputted my BMR and BMI calculators
 
 ## User Story
-
 
 AS A marketing agency
 I WANT a codebase that follows accessibility standards
@@ -57,6 +53,18 @@ WHEN I view the title element
 
 THEN I find a concise, descriptive title
 
+
+## Installation
+
+To install and use the Variable Fitness Nutrition Recommendation Engine application, please follow these steps:
+
+You can clone this repository to your local machine using Git:
+
+git clone https://github.com/harold-fv/project-setup.git
+
+Open the index.html file in your web browser to run the application.
+
+
 ## Usage
 
 1. This is the main view of the Nutrition Health App
@@ -77,20 +85,7 @@ THEN I find a concise, descriptive title
 
 
 
-## Installation
-
-
-To install and use the Variable Fitness Nutrition Recommendation Engine application, please follow these steps:
-
-You can clone this repository to your local machine using Git:
-
-git clone https://github.com/harold-fv/project-setup.git
-
-Open the index.html file in your web browser to run the application.
-
-
 ## Authors and acknowledgment
-
 
 Michael Novas
 Harold Gonzales
@@ -100,7 +95,6 @@ Shabab Chowdhurry
 
 
 ## Project status
-
 
 Overall, this application will help the user gets nutrients recommendation such as foods rich in proteins, complex carbohydrates, and foods that are rich in fiber based on the bmr calculation.
 
