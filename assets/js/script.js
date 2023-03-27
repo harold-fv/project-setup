@@ -1,6 +1,4 @@
-
-
-
+// This calculates the BMR, BMI and provides recommendations
 
 var bmr = 0;
 var bmi = 0;
@@ -90,8 +88,6 @@ fitnessGoal.addEventListener('change', function(){
 
 
 //END OF MIKE'S WORK SECTION
-
-
 // 3pm 3/26/2023: HAROLD WORK ON LINES 65 (STARTING WITH FUNCTION DISPLAY FOOD RECOMMENDATIONS)
 //START OF HAROLD'S SECTION
 function displayFoodRecommendations(goal) {
@@ -240,14 +236,11 @@ function sumArray(meal) {
   var totalSum = document.getElementById('totalSum');
   totalSum.innerHTML = "Your total Food energy calories: " + sum;
   
+  // Storing it to local Storage
   localStorage.setItem('Meals', JSON.stringify(meal)); // save the sum into local storage
 }
 var storedSum = localStorage.getItem('Meals'); // retrieve the sum from local storage
 console.log(storedSum); // log the retrieved sum to the console
-
-
-
-
 
 function displayInfoResults(energyCals, proteinCals, carbCals, fatCals) {
   
@@ -260,9 +253,6 @@ function displayInfoResults(energyCals, proteinCals, carbCals, fatCals) {
   <p>Protein Calories: ${proteinCals}</p>
   <p>Carb Calories: ${carbCals}</p>
   <p>Fat Calories: ${fatCals}</p>
-
-  
-  
 `;
 
 //Added by mike to display total calories of search query food
@@ -312,20 +302,13 @@ function clearResults() {
 clearBtn.addEventListener('click', clearResults);
 
 // To set object into local storage (mike 3.26 1:45pm)
-
 // resultsArray = {}
-
 // var entryLogLocalStorage = JSON.stringify(resultsArray);
-
 // localStorage.setItem('testJSON', entryLogLocalStorage);
-
-
 // console.log(userStringFromLocalStorage);
 // // To retrieve object from local storage (mike 3.26 1:44pm)
 // var entryLogLocalStorage = localStorage.getItem('testJSON');
-
 // let obj = JSON.parse(text);
-
 // document.getElementById("localStorageResults").innerHTML = obj.calories;
 // console.log(userStringFromLocalStorage);
 // // Outputs the user as an object to the console
@@ -361,8 +344,6 @@ function getNutrixResults() {
     console.error(error);
   });
 }
-
-
 
 function displayNutrix(image, foodName, meal) {
   var column1 = `<p>Food Name: ${foodName}</p>

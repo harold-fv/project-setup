@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Variable Fitness Nutrition Recommendation Engine</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/styles.css">
@@ -13,8 +13,7 @@
 </head>
 <body>
 <header>
-	
-	<nav class="navbar navbar-expand-lg bg-body-tertiary">
+	    <nav class="navbar navbar-expand-lg bg-body-tertiary">
 		<div class="container-fluid">
 		  <a class="navbar-brand" href="#">Nutrition Health App</a>
 		  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,37 +29,30 @@
 		</div>
 	  </nav>
 </header>
-
 		<div class="row">
-
-			<div class="col-12 col-lg-3 item1">
-				<h2>Our Mission</h2>
-			</div>
-
-			<div class="col-12 col-lg-8 item2">
-				<p class="p-margin">Our Nutrition App helps you achieve your fitness goals of toning up, losing weight, or gaining muscle. By inputting your weight, height, gender, and age, you can calculate your Basal Metabolic Rate (BMR) and receive a suggested daily calorie intake. We provide personalized meal plans with a variety of options for both vegetarians and meat-eaters, along with detailed nutritional information to track your progress. Our app makes healthy eating convenient and easy to fit your specific fitness goals. Download our app today to start achieving your goals!</p>
-			</div>
-
+		<div class="col-12 col-lg-3 item1">
+		<h2>Our Mission</h2>
 		</div>
-
-
-
-			<div class="row marginGetStarted">
-				<div class="getStartMargin">
-					<div class="flex col-12">
-						<H2>Getting Started!</H2>
+		<div class="col-12 col-lg-8 item2">
+		<p class="p-margin">Our Nutrition App helps you achieve your fitness goals of toning up, losing weight, or gaining muscle. By inputting your weight, height, gender, and age, you can calculate your Basal Metabolic Rate (BMR) and receive a suggested daily calorie intake. We provide personalized meal plans with a variety of options for both vegetarians and meat-eaters, along with detailed nutritional information to track your progress. Our app makes healthy eating convenient and easy to fit your specific fitness goals. Download our app today to start achieving your goals!</p>
+		</div>
+		</div>
+		<div class="row marginGetStarted">
+		<div class="getStartMargin">
+		<div class="flex col-12">
+<!-- This Calculates the BMR -->
+			<H2>Getting Started!</H2>
+			</div>
+			</div>
+			<div class="col-12 item2">
+			<h2>Let's Calculate you BMR!</h2>
+					
+			<form id="bmrCalcForm" action="submitBMR">
+				<div class="catagory">
+					<label for="weight">Weight (kg):</label>
+					<input type="number" id="weight" name="weight" required>
 					</div>
-				</div>
-	
-				<div class="col-12 item2">
-						<h2>Let's Calculate you BMR!</h2>
-						
-					<form id="bmrCalcForm" action="submitBMR">
-						<div class="catagory">
-							<label for="weight">Weight (kg):</label>
-							<input type="number" id="weight" name="weight" required>
-						</div>
-						
+				
 						<div class="catagory">
 							<label for="height">Height (m):</label>
             				<input type="number" id="height" name="height" required>
@@ -95,7 +87,7 @@
 								<option value="strengthtrain">Strength Train</option>
 							</select>
 						</div>	
-									 <!-- by shabab //This is our modal that is triggered by a button,
+ <!-- by shabab //This is our modal that is triggered by a button,
 //but we want the modal popup body text to contain/be populated w all the nutrition recommendations,
 //meal recs, activity recs, nutrition/advice, specific foods, etc.
 // -->
@@ -130,11 +122,9 @@
   </div>
 </div>		
 </div>
-
-				
-
+<!-- View the Search Result-->
 		<div class="row margin-outside">
-			<div class="col-md-8 card">
+			<div class="col-md-8 card">				
 				<div class="display1">
 					<div id="searchResult"></div>
 				</div>
@@ -148,45 +138,28 @@
 				
 			</div>
 		</div>
-		
+	<!-- View the total summ-->
 		<div id="totalSum"></div>
-
-
 
 	<!-- this is the nutrition ix api  -->
 <div class="row">
-	
 	<div class="nutrix">
 		<input type="text" id="searchInput">
 		<button class = "searchBtn" id="searchBtn">Search</button>
 		    <!-- Added by harold -->
 			<button class ="searchBtn"id="clearBtn">Clear</button>
-	
-		<div id="searchResult"></div>
+ 		<div id="searchResult"></div>
 		
 	</div>
 	
 </div>
-	
-
-		
-
 <div class="row">
 	<div class="col-md-8">
-
 	</div>
 	<div class="col-md-4">
-		
+
 	</div>
 </div>
-
-<!-- //created by Harold -->
-
-
-
-
-
-
 
 
 <!--by Shabab //This is a sample of a bootstrap modal,
@@ -210,10 +183,6 @@
 	</div>
   </div> -->
    
-
-
-	
-
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   <script src="./assets/js/script.js"></script>
  </body>
