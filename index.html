@@ -95,10 +95,39 @@
 								<option value="strengthtrain">Strength Train</option>
 							</select>
 						</div>	
-						<div class="calculate">
-							<input type="button" value="Calculate" onclick="bmrbmicalc()">
-							
-						</div>
+									 <!-- by shabab //This is our modal that is triggered by a button,
+//but we want the modal popup body text to contain/be populated w all the nutrition recommendations,
+//meal recs, activity recs, nutrition/advice, specific foods, etc.
+// -->
+<!-- Button trigger modal -->
+<button  id="calculateBtn" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+	Get Recommendation
+  </button>
+  <!-- Modal -->
+  <div class="modal" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="exampleModalLongTitle">Fitness & Nutrition Recommendation:</h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		 <!-- this div below is where the fitness recommendation goes, Strength Train: etc etc etc, Tone: etc etc etc, Fat loss: etc etc etc-->
+		<div class="modal-body">
+		  <p id="result2"></p>
+  
+		  <div class="result3">
+			  <p id="result"></p>
+			  <p id="localStorageResults"></p>
+		  </div>
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		</div>
+	  </div>
+	</div>
+  </div>
 							
 				</div>			
 					
@@ -109,12 +138,12 @@
 						
 						<div class="container item2">
 							
-							<p id="result2"></p>
+							<!-- <p id="result2"></p>
 
 								<div class="result3">
 									<p id="result"></p>
 									<p id="localStorageResults"></p>
-								</div>
+								</div> -->
 								
 							
 						</div>
@@ -125,7 +154,7 @@
 			</div>
 
 				
-			
+
 		
 		
 	
@@ -148,6 +177,14 @@
 		
 		
 
+<div class="row">
+	<div class="col-md-8">
+
+	</div>
+	<div class="col-md-4">
+		
+	</div>
+</div>
 
 <!-- //created by Harold -->
 
@@ -162,8 +199,8 @@
 //but we want this to be the window that
 //pops up with all the nutrition recommendations,
 //meal recs, activity recs, nutrition/advice, specific foods, etc.
-// -->
-<div class="container">
+ // -->
+<!-- <div class="container">
 	
 	<button type="button" class="btn btn-info btn-lg" id="myBtn">Get Recommendation</button>
 	<div class="modal" id="myModal">
@@ -177,8 +214,8 @@
 		</div>
 	  </div>
 	</div>
-  </div>
-  
+  </div> -->
+   
 
 
 	

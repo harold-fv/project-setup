@@ -4,6 +4,9 @@ var bmi = 0;
 var targetBMR = 0;
 var activityFactor = 0;
 
+var calcBtn = document.getElementById('calculateBtn')
+calcBtn.addEventListener('click', bmrbmicalc)
+
 function bmrbmicalc() {
   var weight = Number(document.getElementById("weight").value);
   var height = Number(document.getElementById("height").value);
@@ -356,13 +359,13 @@ function sumArray(resultsArray){
 
 
 // Get the modal
-var modal = document.getElementById("myModal");
+var modal = document.getElementById("exampleModalCenter");
 
 // Get the button that opens the modal
-var btn = document.getElementById("myBtn");
+var btn = document.querySelector("[data-target='#exampleModalCenter']");
 
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+var span = document.querySelector("#exampleModalCenter .close");
 
 // When the user clicks the button, open the modal
 btn.onclick = function() {
