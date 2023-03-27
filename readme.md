@@ -14,7 +14,7 @@ The deployed application can be access at
 ## Description
 
 
-The personalized nuutrition recommendation engine is powered by 4 primary components.
+The personalized nutrition recommendation engine is powered by 4 primary components.
 
 A User health info input forms and a fitness goal selector that feeds the calculators for Bsaal Metabolic Rate (BMR) and BMI calculators
 B Two API functions to call for and receive respones from two APIS (Nutritionix and Edamam)
