@@ -8,7 +8,7 @@ We created a variable user fitness nutrition recommendation engine that gives pe
 
 The deployed application can be access at
 
-[URL](www.urlhere.com)
+[URL](https://github.com/harold-fv/project-setup/deployments/activity_log?environment=github-pages)
 
 
 ## Description
@@ -24,60 +24,65 @@ D A modal to display recommendations based on values outputted my BMR and BMI ca
 ## User Story
 
 
-AS A marketing agency
-I WANT a codebase that follows accessibility standards
-SO THAT our own site is optimized for search engines
+AS A fitness motivated individual
+I WANT to see personalized recommmendation based on my biometric data
+SO THAT I can get help reaching my fitness goals
 
 
 ## Acceptance Criteria
 
 GIVEN a webpage meets accessibility standards
 
-WHEN I view the source code
+WHEN I input my height, weight, gender, age and click submit
+THEN it is stored in a variable
 
-THEN I find semantic HTML elements
+\WHEN I visit the deployed page or liveserver
+THEN there is basic CSS styling
+
+WHEN User submits health info
+THEN my BMI and percentile is shown
+
+WHEN User submits health info
+THEN my BMR in calories per day is shown
+
+WHEN user submits info
+THEN I am presented with three fitness goals to choose from
+
+WHEN I select a fitness goal type (weight loss, toning, strength training)
+THEN the baseBMR is adjusted per selected fitness goal and the adjusted value is stored in var = targetBMR with:
+
+if weight loss goal selected, targetBMR is < baseBMR
+If toning goal is selected, targetBMR is = baseBMR
+If strength training goal is selected, targetBMR is > baseBMR
+
+WHEN I have completed all USER INPUTS
+THEN the relevant data is formatted, packaged and stored to make the appropriate API call with
+
+WHEN the API responds with a few meals and foods that fit the criteria
+THEN the total sum of calories from suggested meals displayed is equal (or roughly equal) to the fitness goal adjusted
+var targetBMR
+
+WHEN the API response with suggested meals and food are received
+THEN they are sorted and displayed so that the proportion of calories from protein, carbohydrates and fat are aligned with user health and fitness goals.
+
+When the user submits a search query
+Then a result log card is generated above the search input box, that displays the food name and total calories
+
+WHEN a recommendation is appropriate
+THEN it is displayed in the modal
 
 
-WHEN I view the structure of the HTML elements
-
-THEN I find that the elements follow a logical structure independent of styling and positioning
+## Screenshots
 
 
-WHEN I view the icon and image elements
-
-THEN I find accessible alt attributes
+![image](Screenshot1)
 
 
-WHEN I view the heading attributes
-
-THEN they fall in sequential order
-
-
-WHEN I view the title element
-
-THEN I find a concise, descriptive title
-
-## Visuals
-
-
-![image](https://github.com/michael55github/UCLAchallenge1/blob/main/assets/images/brand-awareness.png)
-
-![image](https://github.com/michael55github/UCLAchallenge1/blob/main/assets/images/cost-management.png)
-
-![image](https://github.com/michael55github/UCLAchallenge1/blob/main/assets/images/digital-marketing-meeting.jpg)
-
-![image](https://github.com/michael55github/UCLAchallenge1/blob/main/assets/images/lead-generation.png)
-
-![image](https://github.com/michael55github/UCLAchallenge1/blob/main/assets/images/online-reputation-management.jpg)
-
-![image](https://github.com/michael55github/UCLAchallenge1/blob/main/assets/images/search-engine-optimization.jpg)
-
-![image](https://github.com/michael55github/UCLAchallenge1/blob/main/assets/images/social-media-marketing.jpg)
 
 ## Mock-Up
 
 
-![mockup](https://github.com/michael55github/UCLAchallenge1/blob/main/MockUp90Goal/01-html-css-git-homework-demo.png)
+![mockup](https://files.slack.com/files-tmb/T04J3A26NHK-F0507DJJP7U-992e0e9964/img_0406_720.jpg)
 
 The following image shows the web application's appearance and functionality:
 
@@ -85,16 +90,25 @@ The following image shows the web application's appearance and functionality:
 
 > **Note**: This layout is designed for desktop viewing, so you may notice that some of the elements don't look like the mock-up at a resolution smaller than 768px. Eventually you'll learn how to make elements responsive so that your web application is optimized for any screen size.
 
+## Wireframe / USerflow
+
+![Wireframe](https://files.slack.com/files-tmb/T04J3A26NHK-F050KP0EUBB-290939cdd2/img_3633_720.jpg)
 
 ## Usage
 
 
-To see this website go to the URL submission for github pages
+To see this website go to the github pages deployment associated with this repo
 
 ## Authors and acknowledgment
 
 
 Michael Novas
+
+Shabab Chowdhury
+
+Harold Gonzales
+
+Anthony Ayala Arrelano
 
 ## License
 
