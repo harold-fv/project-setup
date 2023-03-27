@@ -1,4 +1,7 @@
 
+
+
+
 var bmr = 0;
 var bmi = 0;
 var targetBMR = 0;
@@ -142,6 +145,7 @@ var appeda_Id = 'a230f40d';
 var ingredients = document.getElementById("ingredient");
 var searchBtn = document.getElementById("searchBtn");
 searchBtn.addEventListener('click', getResults);
+// searchBtn.addEventListener('click', addToTotalCard)
 function getResults() {
   //sample fetch request
   fetch('https://api.edamam.com/api/food-database/v2/parser?app_id=' + appeda_Id + '&app_key=' + appedaKey + '&ingr=' + searchInput.value, {
@@ -202,40 +206,63 @@ fetch('https://api.edamam.com/api/food-database/v2/parser?app_id=' + appeda_Id +
   });
 }
 
-//added by Harold. This will total the Calories 3/25
-function addToTotalCard(){
-  console.log("Inside addtoTotalCard");
-  var divTotal = document.getElementById('totalCal');
- //created by Harold
- totalEnergyCal = totalEnergyCal + energyCals;
- totalproteinCals =  totalproteinCals + proteinCals;
- totalcarbCals = totalcarbCals + carbCals;
- totalfatCals =   totalfatCals + fatCals;
+// //added by Harold. This will total the Calories 3/25
+// function addToTotalCard(){
+//   console.log("Inside addtoTotalCard");
+//   var divTotal = document.getElementById('totalCal');
+//  //created by Harold
+//  totalEnergyCal = totalEnergyCal + energyCals[i];
+//  totalproteinCals =  totalproteinCals + proteinCals[i];
+//  totalcarbCals = totalcarbCals + carbCals[i];
+//  totalfatCals =   totalfatCals + fatCals[i];
+// totalEverything = [carbCals, fatCals, proteinCals]
+// sumArray(totalEverything)
+// //added the total calories inside the function by harold 3/25
+//  divTotal.innerHTML = `
+//  <p>Total Energy Calories: ${totalEnergyCal}</p>
+//  <p>Total Protein Calories: ${ totalproteinCals}</p>
+//  <p>Total Carb Calories: ${ totalcarbCals}</p>
+//  <p>Total Fat Calories: ${ totalfatCals }</p>`
+//  console.log(divTotal);
+// ;
+// }
 
-//added the total calories inside the function by harold 3/25
- divTotal.innerHTML = `
- <p>Total Energy Calories: ${totalEnergyCal}</p>
- <p>Total Protein Calories: ${ totalproteinCals}</p>
- <p>Total Carb Calories: ${ totalcarbCals}</p>
- <p>Total Fat Calories: ${ totalfatCals }</p>`
- console.log(divTotal);
-;
+
+// by michael
+function sumArray(meal) {
+  let sum = 0; // the sum is initialized to 0
+  for (let i = 0; i < meal.length; i++) {
+    // take every item in the array and add it to sum variable
+    sum += meal[i].energy;
+    console.log(sum);
+  }
+  
+  var totalSum = document.getElementById('totalSum');
+  totalSum.innerHTML = "Your total Food energy calories: " + sum;
+  
+  localStorage.setItem('Meals', JSON.stringify(meal)); // save the sum into local storage
 }
+var storedSum = localStorage.getItem('Meals'); // retrieve the sum from local storage
+console.log(storedSum); // log the retrieved sum to the console
+
+
 
 
 
 function displayInfoResults(energyCals, proteinCals, carbCals, fatCals) {
   
   //added  by Harold.  <h2>${searchInput.value}</h2> and <button type="button" id="addFood">Add</button>  
-  var divResults = document.getElementById('resultsArray')
+  var divResults = document.getElementById('meal')
   console.log(divResults);
-  divResults.innerHTML = `
+  divResults.innerHTML += `
   <h2>${searchInput.value}</h2>
   <p>Energy Calories: ${energyCals}</p>
   <p>Protein Calories: ${proteinCals}</p>
   <p>Carb Calories: ${carbCals}</p>
   <p>Fat Calories: ${fatCals}</p>
-  <button type="button" id="addFood">Add</button> 
+
+  
+  
 `;
 
 //Added by mike to display total calories of search query food
@@ -251,8 +278,8 @@ function displayFoodTotalCaloriesOnly(energyCals, proteinCals, carbCals, fatCals
 `;
 */
 //added by Harold. This is to add the selected search food to the today calories
-let addFoodEl = document.querySelector("#addFood");
-addFoodEl.addEventListener("click", addToTotalCard)
+// var addFoodEl = document.querySelector(".addFood");
+// addFoodEl.addEventListener("click", addToTotalCard)
 
 //  var divTotal = document.getElementById('totalCal');
 //  //created by Harold
@@ -271,7 +298,7 @@ addFoodEl.addEventListener("click", addToTotalCard)
 //created by Harold. Clear button
 var clearBtn = document.getElementById('clearBtn');
 function clearResults() {
-    var divResults = document.getElementById('resultsArray');
+    var divResults = document.getElementById('meal');
     divResults.innerHTML = '';
     var divTotal = document.getElementById('totalCal');
     divTotal.innerHTML = '';
@@ -281,34 +308,35 @@ function clearResults() {
     totalfatCals =0 ;
 }
 
+
 clearBtn.addEventListener('click', clearResults);
-/*
+
 // To set object into local storage (mike 3.26 1:45pm)
 
-resultsArray = {}
+// resultsArray = {}
 
-var entryLogLocalStorage = JSON.stringify(resultsArray);
+// var entryLogLocalStorage = JSON.stringify(resultsArray);
 
-localStorage.setItem('testJSON', entryLogLocalStorage);
+// localStorage.setItem('testJSON', entryLogLocalStorage);
 
 
-console.log(userStringFromLocalStorage);
-// To retrieve object from local storage (mike 3.26 1:44pm)
-var entryLogLocalStorage = localStorage.getItem('testJSON');
+// console.log(userStringFromLocalStorage);
+// // To retrieve object from local storage (mike 3.26 1:44pm)
+// var entryLogLocalStorage = localStorage.getItem('testJSON');
 
-let obj = JSON.parse(text);
+// let obj = JSON.parse(text);
 
-document.getElementById("localStorageResults").innerHTML = obj.calories;
-console.log(userStringFromLocalStorage);
-// Outputs the user as an object to the console
+// document.getElementById("localStorageResults").innerHTML = obj.calories;
+// console.log(userStringFromLocalStorage);
+// // Outputs the user as an object to the console
 
-*/
+
 
   //created by aarellano
 var searchInput = document.getElementById('searchInput')
 var searchBtn = document.getElementById('searchBtn')
 var searchResult = document.getElementById('searchResult')
-searchBtn.addEventListener('click', getNutrixResults)
+searchBtn.addEventListener('click', getNutrixResults, displayInfoResults)
 function getNutrixResults() {
   var apiKey = '6b6d64cee3b28347ac2bcf9249459402';
   var appId = '494da15a';
@@ -333,29 +361,30 @@ function getNutrixResults() {
     console.error(error);
   });
 }
-function displayNutrix(image, foodName) {
-  var html = `<p>Food Name: ${foodName}</p>
-              <img src="${image}">`;
-              searchResult.innerHTML = html;
-}
-// by michael
-function sumArray(resultsArray){
-  let sum = 0 // the sum is initialed to 0
-  for (let i = 0; i < resultsArray.length; i++) {
-  // take every item in the array and add it to sum variable
-  sum += resultsArray[i]
-  // initial: sum = 0
-  // iteration 1: 0 + 1 => sum = 1
-  // iteration 2: 1 + 4 => sum = 5
-  // iteration 3: 5 + 0 => sum = 5
-  // iteration 4: 5 + 9 => sum = 14
-  // iteration 5: 14 + -3 => sum = 11
+
+
+
+function displayNutrix(image, foodName, meal) {
+  var column1 = `<p>Food Name: ${foodName}</p>
+                 <img src="${image}">`;
+  var column2 = "";
+  if (meal) {
+    column2 = `<p>Search Results:</p>
+               <ul>`;
+    for (var i = 0; i < meal.length; i++) {
+      column2 += `<li>${meal[i]}</li>`;
+    }
+    column2 += `</ul>`;
   }
-  console.log(sum) // 11
-  // System.out.println("Sum value of array elements is : " + sum);
-  // return sum
-  return sum
+  var newCard = document.createElement("div");
+  newCard.className = "row";
+  newCard.innerHTML = `<div class="col-md-6">${column1}</div>
+                        <div class="col-md-6">${column2}</div>`;
+  var searchResult = document.getElementById("searchResult");
+  searchResult.appendChild(newCard);
 }
+
+
 
 
 // Get the modal
